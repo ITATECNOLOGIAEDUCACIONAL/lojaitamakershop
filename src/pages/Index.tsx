@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShoppingBag, Heart } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+
 const Hero = () => {
   return <section className="relative min-h-[90vh] flex items-center py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent z-0"></div>
@@ -12,8 +13,8 @@ const Hero = () => {
           <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 text-sm">Produtos dias das mães!!</Badge>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display tracking-tight leading-tight font-bold">
-            Discover Our Premium <br className="hidden sm:block" />
-            <span className="text-primary"></span>
+            Bem-vindo à <br className="hidden sm:block" />
+            <span className="text-primary">ItaMakerShop</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl text-justify">A ItaMaker Shop nasceu com o propósito de levar inovação e criatividade ao alcance de todos. Somos especializados em robótica educacional, cultura maker, impressão 3D e corte a laser, oferecendo produtos personalizados e soluções práticas para professores, alunos e entusiastas da tecnologia.
@@ -65,6 +66,7 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 const Categories = () => {
   const categories = ["Electronics", "Clothing", "Home & Living", "Books", "Sports & Outdoors"];
   return <section className="py-16">
@@ -84,6 +86,7 @@ const Categories = () => {
       </div>
     </section>;
 };
+
 const FeaturedProducts = () => {
   const products = [{
     id: 1,
@@ -121,6 +124,7 @@ const FeaturedProducts = () => {
       </div>
     </section>;
 };
+
 const DiscountSection = () => {
   return <section className="py-20 bg-primary text-white">
       <div className="container mx-auto px-6 text-center">
@@ -137,6 +141,7 @@ const DiscountSection = () => {
       </div>
     </section>;
 };
+
 const NewArrivals = () => {
   const newArrivals = [{
     id: 4,
@@ -169,6 +174,7 @@ const NewArrivals = () => {
       </div>
     </section>;
 };
+
 const Newsletter = () => {
   return <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
@@ -193,6 +199,7 @@ const Newsletter = () => {
       </div>
     </section>;
 };
+
 const Index = () => {
   return <div>
       <Hero />
@@ -203,4 +210,5 @@ const Index = () => {
       <Newsletter />
     </div>;
 };
+
 export default Index;
