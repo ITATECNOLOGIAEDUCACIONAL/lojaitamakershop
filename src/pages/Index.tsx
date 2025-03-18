@@ -13,7 +13,7 @@ const Hero = () => {
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-tight">
             Discover Our Premium <br className="hidden sm:block" />
-            <span className="text-primary">Product Selection</span>
+            <span className="text-primary">Produtos makes!</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
