@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShoppingBag, Heart } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-
 const Hero = () => {
   return <section className="relative min-h-[90vh] flex items-center py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent z-0"></div>
@@ -32,7 +31,7 @@ const Hero = () => {
         
         <div className="relative lg:ml-auto flex items-center justify-center">
           <div className="relative w-full max-w-lg aspect-square animate-blur-in">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Featured Product" className="w-full h-full object-cover rounded-2xl" />
+            <img alt="Featured Product" className="w-full h-full object-cover rounded-2xl" src="/lovable-uploads/987e2d86-9830-4f2d-9168-b9e29c4ae67a.png" />
             
             <div className="absolute -bottom-8 -left-8 p-4 bg-white rounded-xl shadow-lg animate-slide-up" style={{
             animationDelay: '0.2s'
@@ -66,7 +65,6 @@ const Hero = () => {
       </div>
     </section>;
 };
-
 const Categories = () => {
   const categories = ["Electronics", "Clothing", "Home & Living", "Books", "Sports & Outdoors"];
   return <section className="py-16">
@@ -86,7 +84,6 @@ const Categories = () => {
       </div>
     </section>;
 };
-
 const FeaturedProducts = () => {
   const products = [{
     id: 1,
@@ -124,7 +121,6 @@ const FeaturedProducts = () => {
       </div>
     </section>;
 };
-
 const DiscountSection = () => {
   return <section className="py-20 bg-primary text-white">
       <div className="container mx-auto px-6 text-center">
@@ -141,7 +137,6 @@ const DiscountSection = () => {
       </div>
     </section>;
 };
-
 const NewArrivals = () => {
   const newArrivals = [{
     id: 4,
@@ -174,7 +169,6 @@ const NewArrivals = () => {
       </div>
     </section>;
 };
-
 const Newsletter = () => {
   return <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
@@ -199,7 +193,6 @@ const Newsletter = () => {
       </div>
     </section>;
 };
-
 const Index = () => {
   return <div>
       <Hero />
@@ -210,5 +203,4 @@ const Index = () => {
       <Newsletter />
     </div>;
 };
-
 export default Index;
