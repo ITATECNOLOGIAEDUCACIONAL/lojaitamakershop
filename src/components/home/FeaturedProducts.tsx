@@ -6,40 +6,49 @@ const FeaturedProducts = () => {
   const products = [
     {
       id: 1,
-      name: "Minimalist Watch",
-      imageUrl: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      price: "$79.99"
+      name: "Kit Arduino para Iniciantes",
+      imageUrl: "https://images.unsplash.com/photo-1553406830-ef2513450d76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      price: "R$179,99",
+      promo: "Mês da Mulher"
     }, 
     {
       id: 2,
-      name: "Leather Wallet",
-      imageUrl: "https://images.unsplash.com/photo-1585323348432-c9d93c08011c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      price: "$49.99"
+      name: "Luminária Personalizada",
+      imageUrl: "https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      price: "R$149,99",
+      promo: "Dia das Mães"
     }, 
     {
       id: 3,
-      name: "Wireless Earbuds",
-      imageUrl: "https://images.unsplash.com/photo-1583394842264-10b2e4659d56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      price: "$99.99"
+      name: "Colar com Nome Gravado",
+      imageUrl: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      price: "R$89,99",
+      promo: "Dia das Mães"
     }
   ];
 
   return (
     <section className="py-16">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-display font-bold text-center mb-8">
-          Featured Products
+        <h2 className="text-3xl font-display font-bold text-center mb-2">
+          Produtos em Destaque
         </h2>
+        <p className="text-center text-gray-600 mb-8">Mês da Mulher! e Dia das Mães!</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map(product => (
             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={product.imageUrl} alt={product.name} className="w-full h-64 object-cover" />
+              <div className="relative">
+                <img src={product.imageUrl} alt={product.name} className="w-full h-64 object-cover" />
+                <div className="absolute top-0 right-0 bg-pink-500 text-white py-1 px-3 rounded-bl-lg">
+                  {product.promo}
+                </div>
+              </div>
               <div className="p-4">
                 <h3 className="font-medium text-lg text-gray-800 mb-2">
                   {product.name}
                 </h3>
                 <p className="text-gray-600">{product.price}</p>
-                <Button className="mt-4 w-full">Add to Cart</Button>
+                <Button className="mt-4 w-full">Adicionar ao Carrinho</Button>
               </div>
             </div>
           ))}
