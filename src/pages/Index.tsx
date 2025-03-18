@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShoppingBag, Heart, Bot, Printer, Scissors, Circuit, Gift, Cube } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Heart, Bot, Printer, Scissors, CircuitBoard, Gift, Package } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 const Hero = () => {
   return <section className="relative min-h-[90vh] flex items-center py-24 overflow-hidden">
@@ -71,7 +70,7 @@ const Categories = () => {
     { name: "Robótica", icon: Bot },
     { name: "Impressão 3D", icon: Printer },
     { name: "Corte a Laser", icon: Scissors },
-    { name: "Componentes", icon: Circuit },
+    { name: "Componentes", icon: CircuitBoard },
     { name: "Personalizados", icon: Gift }
   ];
   
