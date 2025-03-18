@@ -31,7 +31,7 @@ const Hero = () => {
         
         <div className="relative lg:ml-auto flex items-center justify-center">
           <div className="relative w-full max-w-lg aspect-square animate-blur-in">
-            <img alt="Featured Product" className="w-full h-full object-cover rounded-2xl" src="/lovable-uploads/987e2d86-9830-4f2d-9168-b9e29c4ae67a.png" />
+            <img alt="Featured Product" className="w-full h-full object-cover rounded-2xl" src="/lovable-uploads/fc5db65d-ee8a-4d66-8b00-9b2caf955109.png" />
             
             <div className="absolute -bottom-8 -left-8 p-4 bg-white rounded-xl shadow-lg animate-slide-up" style={{
             animationDelay: '0.2s'
