@@ -11,14 +11,13 @@ const Hero = () => {
         <div className="space-y-6 mt-12 lg:mt-0 animate-slide-up">
           <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 text-sm">Produtos dias das mães!!</Badge>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display tracking-tight leading-tight font-bold">
             Discover Our Premium <br className="hidden sm:block" />
-            <span className="text-primary">Produtos makes!</span>
+            <span className="text-primary"></span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
-            Experience quality with our modern, minimalist designs. Crafted for those who appreciate functional elegance.
-          </p>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-xl text-justify">A ItaMaker Shop nasceu com o propósito de levar inovação e criatividade ao alcance de todos. Somos especializados em robótica educacional, cultura maker, impressão 3D e corte a laser, oferecendo produtos personalizados e soluções práticas para professores, alunos e entusiastas da tecnologia.
+        </p>
           
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <Button size="lg" className="gap-2">
