@@ -8,6 +8,7 @@ import { CartProvider } from "@/context/CartContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LaserCutProducts from "./pages/LaserCutProducts";
+import ThreeDPrintProducts from "./pages/3DPrintProducts";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
@@ -24,6 +25,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/corte-a-laser" element={<LaserCutProducts />} />
+            <Route path="/impressao-3d" element={<ThreeDPrintProducts />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

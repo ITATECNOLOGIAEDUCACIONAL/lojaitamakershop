@@ -6,7 +6,7 @@ import { Bot, Printer, Scissors, CircuitBoard, Gift } from 'lucide-react';
 const Categories = () => {
   const categories = [
     { name: "Robótica", icon: Bot, path: "/produtos/robotica" },
-    { name: "Impressão 3D", icon: Printer, path: "/produtos/impressao-3d" },
+    { name: "Impressão 3D", icon: Printer, path: "/impressao-3d" },
     { name: "Corte a Laser", icon: Scissors, path: "/corte-a-laser" },
     { name: "Componentes", icon: CircuitBoard, path: "/produtos/componentes" },
     { name: "Personalizados", icon: Gift, path: "/produtos/personalizados" }
