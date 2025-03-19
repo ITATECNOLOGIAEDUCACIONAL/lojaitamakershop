@@ -1,4 +1,3 @@
-
 // Define the Product interface
 export interface Product {
   id: string;
@@ -95,7 +94,7 @@ export const products: Product[] = [
     id: "3d-1",
     name: "Cofre Creeper",
     description: "Cofre personalizado em formato de Creeper do Minecraft, perfeito para guardar moedas e pequenos objetos. Impressão 3D em PLA.",
-    price: 39.90,
+    price: 35.90,
     images: ["/lovable-uploads/45c78b88-2ca7-46ab-9b46-0a39a1de9230.png"],
     category: "Impressão 3D",
     tags: ["cofre", "minecraft", "personalizado"],
@@ -107,7 +106,7 @@ export const products: Product[] = [
     id: "3d-2",
     name: "Chaveiro Personalizado",
     description: "Chaveiro personalizado com nome 'Beatriz', feito em impressão 3D com cores vibrantes. Personalizamos com o nome que desejar.",
-    price: 19.90,
+    price: 15.90,
     images: ["/lovable-uploads/a0604a35-c9b5-49fd-9865-2693ac0bc7cc.png"],
     category: "Impressão 3D",
     tags: ["chaveiro", "personalizado", "nome"],
@@ -119,7 +118,7 @@ export const products: Product[] = [
     id: "3d-3",
     name: "Chaveiro Instagram",
     description: "Chaveiro em formato do logo do Instagram, impresso em 3D com acabamento de qualidade. Perfeito para presentes.",
-    price: 14.90,
+    price: 12.90,
     images: ["/lovable-uploads/d87b419b-263a-4dc0-ba9e-692ff3c26ecd.png"],
     category: "Impressão 3D",
     tags: ["chaveiro", "instagram", "rede social"],
@@ -131,7 +130,7 @@ export const products: Product[] = [
     id: "3d-4",
     name: "Suporte para Chaveiros",
     description: "Suporte giratório para organizar e exibir chaveiros, feito em impressão 3D. Ideal para coleções ou uso comercial.",
-    price: 49.90,
+    price: 45.90,
     images: ["/lovable-uploads/a64e8e68-1ae5-4065-abdf-960953868eb2.png"],
     category: "Impressão 3D",
     tags: ["suporte", "organização", "chaveiros"],
@@ -143,7 +142,7 @@ export const products: Product[] = [
     id: "3d-5",
     name: "Cofre Mecânico",
     description: "Cofre mecânico com engrenagens visíveis, produzido em impressão 3D. Design único que combina funcionalidade e estilo.",
-    price: 59.90,
+    price: 55.90,
     images: ["/lovable-uploads/1cb996d5-511a-4835-9e3e-dca5c687c977.png"],
     category: "Impressão 3D",
     tags: ["cofre", "mecânico", "engrenagens"],
