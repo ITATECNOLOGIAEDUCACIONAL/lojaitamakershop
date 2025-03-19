@@ -4,6 +4,10 @@ import { useCart } from '@/context/CartContext';
 import { Scissors, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Form, FormField, FormItem, FormLabel, FormControl } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
 
 interface LaserCutProduct {
   id: string;
@@ -13,11 +17,15 @@ interface LaserCutProduct {
   description: string;
 }
 
+interface PriceFormValues {
+  price: string;
+}
+
 const LaserCutProducts = () => {
   const { addItem } = useCart();
   const { toast } = useToast();
   
-  const products: LaserCutProduct[] = [
+  const [products, setProducts] = React.useState<LaserCutProduct[]>([
     {
       id: "laser-1",
       name: "Chaveiro Raspadinha",
@@ -53,7 +61,7 @@ const LaserCutProducts = () => {
       price: 89.90,
       description: "Mapa do Brasil em MDF com camadas, mostrando os estados com detalhes territoriais."
     }
-  ];
+  ]);
 
   const handleAddToCart = (product: LaserCutProduct) => {
     addItem({
@@ -69,6 +77,22 @@ const LaserCutProducts = () => {
     toast({
       title: "Produto adicionado!",
       description: `${product.name} foi adicionado ao carrinho`,
+      duration: 3000,
+    });
+  };
+
+  const updateProductPrice = (productId: string, newPrice: number) => {
+    setProducts(prevProducts => 
+      prevProducts.map(product => 
+        product.id === productId 
+          ? { ...product, price: newPrice } 
+          : product
+      )
+    );
+    
+    toast({
+      title: "Preço atualizado!",
+      description: "O preço do produto foi atualizado com sucesso",
       duration: 3000,
     });
   };
@@ -100,7 +124,16 @@ const LaserCutProducts = () => {
                 <h3 className="text-xl font-medium text-gray-800 mb-2">{product.name}</h3>
                 <p className="text-gray-600 mb-4 h-20 overflow-hidden">{product.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-primary text-xl font-semibold">R$ {product.price.toFixed(2).replace('.', ',')}</span>
+                  <div className="flex items-center">
+                    <span className="text-primary text-xl font-semibold mr-2">
+                      R$ {product.price.toFixed(2).replace('.', ',')}
+                    </span>
+                    <PriceEditDialog 
+                      productId={product.id} 
+                      currentPrice={product.price} 
+                      onPriceUpdate={updateProductPrice} 
+                    />
+                  </div>
                   <Button onClick={() => handleAddToCart(product)} className="flex items-center">
                     <ShoppingCart className="mr-2 h-4 w-4" />
                     Adicionar
@@ -112,6 +145,64 @@ const LaserCutProducts = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const PriceEditDialog = ({ 
+  productId, 
+  currentPrice, 
+  onPriceUpdate 
+}: { 
+  productId: string; 
+  currentPrice: number; 
+  onPriceUpdate: (productId: string, newPrice: number) => void 
+}) => {
+  const form = useForm<PriceFormValues>({
+    defaultValues: {
+      price: currentPrice.toString()
+    }
+  });
+
+  const handleSubmit = (values: PriceFormValues) => {
+    const newPrice = parseFloat(values.price.replace(',', '.'));
+    if (!isNaN(newPrice) && newPrice > 0) {
+      onPriceUpdate(productId, newPrice);
+    }
+  };
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="ghost" size="icon" className="h-6 w-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+            <path d="m15 5 4 4"/>
+          </svg>
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Editar Preço</DialogTitle>
+        </DialogHeader>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">
+            <FormField
+              control={form.control}
+              name="price"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Preço (R$)</FormLabel>
+                  <FormControl>
+                    <Input placeholder="0,00" {...field} />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Salvar</Button>
+          </form>
+        </Form>
+      </DialogContent>
+    </Dialog>
   );
 };
 
