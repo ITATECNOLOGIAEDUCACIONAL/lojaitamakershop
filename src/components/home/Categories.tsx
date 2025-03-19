@@ -5,11 +5,11 @@ import { Bot, Printer, Scissors, CircuitBoard, Gift } from 'lucide-react';
 
 const Categories = () => {
   const categories = [
-    { name: "Robótica", icon: Bot },
-    { name: "Impressão 3D", icon: Printer },
-    { name: "Corte a Laser", icon: Scissors },
-    { name: "Componentes", icon: CircuitBoard },
-    { name: "Personalizados", icon: Gift }
+    { name: "Robótica", icon: Bot, path: "/produtos/robotica" },
+    { name: "Impressão 3D", icon: Printer, path: "/produtos/impressao-3d" },
+    { name: "Corte a Laser", icon: Scissors, path: "/corte-a-laser" },
+    { name: "Componentes", icon: CircuitBoard, path: "/produtos/componentes" },
+    { name: "Personalizados", icon: Gift, path: "/produtos/personalizados" }
   ];
   
   return (
@@ -25,7 +25,7 @@ const Categories = () => {
           {categories.map(category => (
             <Link 
               key={category.name} 
-              to={`/products?category=${category.name}`} 
+              to={category.path} 
               className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-2">

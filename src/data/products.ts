@@ -54,6 +54,42 @@ export const products: Product[] = [
     rating: 4.5,
     reviews: 78,
     inStock: true
+  },
+  {
+    id: "laser-1",
+    name: "Chaveiro Raspadinha",
+    description: "Chaveiro personalizado em formato de raspadinha, perfeito para lembrança de eventos e presentes.",
+    price: 14.90,
+    images: ["/lovable-uploads/6d7f8dc0-1202-4955-b4af-b78f3bf72338.png"],
+    category: "Corte a Laser",
+    tags: ["chaveiro", "personalizado", "mdf"],
+    rating: 4.7,
+    reviews: 42,
+    inStock: true
+  },
+  {
+    id: "laser-2",
+    name: "Mini Caixinha Deslizante",
+    description: "Caixinha deslizante em MDF, perfeita para guardar pequenos objetos ou dar de presente.",
+    price: 19.90,
+    images: ["/lovable-uploads/8d793d72-29ee-4be1-a48e-161c861a6476.png"],
+    category: "Corte a Laser",
+    tags: ["caixa", "mdf", "presente"],
+    rating: 4.8,
+    reviews: 36,
+    inStock: true
+  },
+  {
+    id: "laser-3",
+    name: "Mapa do Brasil em Camadas",
+    description: "Mapa do Brasil em MDF com camadas, mostrando os estados com detalhes territoriais.",
+    price: 89.90,
+    images: ["/lovable-uploads/ebb6abe4-b25d-4ef0-8161-c24cec3b6112.png"],
+    category: "Corte a Laser",
+    tags: ["mapa", "decoração", "mdf"],
+    rating: 4.9,
+    reviews: 28,
+    inStock: true
   }
 ];
 
