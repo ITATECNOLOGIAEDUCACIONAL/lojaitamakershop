@@ -48,7 +48,7 @@ const ThreeDPrintProducts = () => {
     },
     {
       id: "3d-4",
-      name: "Suporte para Chaveiros",
+      name: "Organizador de Chaveiros",
       imageUrl: "/lovable-uploads/a64e8e68-1ae5-4065-abdf-960953868eb2.png",
       price: 45.90,
       description: "Suporte giratório para organizar e exibir chaveiros, feito em impressão 3D. Ideal para coleções ou uso comercial."
@@ -58,7 +58,7 @@ const ThreeDPrintProducts = () => {
       name: "Cofre Mecânico",
       imageUrl: "/lovable-uploads/1cb996d5-511a-4835-9e3e-dca5c687c977.png",
       price: 55.90,
-      description: "Cofre mecânico com engrenagens visíveis, produzido em impressão 3D. Design único que combina funcionalidade e estilo."
+      description: "Cofre mecânico com design exclusivo e engrenagens visíveis, produzido em impressão 3D. Combina funcionalidade e estilo."
     }
   ]);
 
