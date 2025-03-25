@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useCart } from '@/context/CartContext';
 import { Printer, ShoppingCart } from 'lucide-react';
