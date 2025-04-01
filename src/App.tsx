@@ -14,6 +14,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import CartSidebar from "./components/cart/CartSidebar";
 import CustomerRegistration from "./pages/CustomerRegistration";
+import Checkout from "./pages/Checkout";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/impressao-3d" element={<ThreeDPrintProducts />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/cadastro" element={<CustomerRegistration />} />
+            <Route path="/checkout" element={<Checkout />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

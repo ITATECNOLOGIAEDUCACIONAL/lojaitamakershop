@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getProductsByCategory } from '@/data/products';
 import { ProductCard } from '@/components/products/ProductCard';
 import { useCart } from '@/context/CartContext';
@@ -32,7 +32,13 @@ const LaserCutProducts = () => {
         {products.map((product) => (
           <ProductCard
             key={product.id}
-            product={product}
+            product={{
+              id: product.id,
+              name: product.name,
+              description: product.description,
+              price: product.price,
+              imageUrl: product.images[0] || ''
+            }}
             onAddToCart={handleAddToCart}
             onPriceUpdate={handlePriceUpdate}
             showAdminControls={false}
