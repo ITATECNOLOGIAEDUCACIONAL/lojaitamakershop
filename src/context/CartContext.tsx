@@ -1,10 +1,13 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
-// Define the cart item type
+// Define cart item interface
 export interface CartItem {
-  product: any; // Replace with actual Product type when available
+  id: string;
+  name: string;
+  price: number;
   quantity: number;
+  imageUrl?: string;
   selectedVariants?: Record<string, string>;
 }
 
@@ -13,6 +16,7 @@ interface CartContextType {
   items: CartItem[];
   isOpen: boolean;
   addItem: (item: CartItem) => void;
+  addToCart: (item: CartItem) => void; // Added for compatibility
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -31,7 +35,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isOpen, setIsOpen] = useState(false);
 
   const addItem = (item: CartItem) => {
-    const existingIndex = items.findIndex(i => i.product.id === item.product.id);
+    const existingIndex = items.findIndex(i => i.id === item.id);
     
     if (existingIndex > -1) {
       // Update quantity if item exists
@@ -44,14 +48,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Alias for addItem to maintain compatibility with 3DPrintProducts.tsx
+  const addToCart = addItem;
+
   const removeItem = (id: string) => {
-    setItems(prev => prev.filter(item => item.product.id !== id));
+    setItems(prev => prev.filter(item => item.id !== id));
   };
 
   const updateQuantity = (id: string, quantity: number) => {
     setItems(prev => 
       prev.map(item => 
-        item.product.id === id ? { ...item, quantity } : item
+        item.id === id ? { ...item, quantity } : item
       )
     );
   };
@@ -70,8 +77,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const getCartTotal = () => {
     return items.reduce((total, item) => {
-      const price = item.product.discountPrice || item.product.price;
-      return total + (price * item.quantity);
+      return total + (item.price * item.quantity);
     }, 0);
   };
 
@@ -83,6 +89,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     items,
     isOpen,
     addItem,
+    addToCart, // Added for compatibility
     removeItem,
     updateQuantity,
     clearCart,
