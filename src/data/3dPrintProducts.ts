@@ -44,3 +44,9 @@ export const initialProducts: PrintProduct[] = [
     description: "Cofre mecânico com design exclusivo e engrenagens visíveis, produzido em impressão 3D. Combina funcionalidade e estilo."
   }
 ];
+
+// Function to get products, potentially from localStorage if they've been modified in the admin panel
+export const getProducts = (): PrintProduct[] => {
+  const savedProducts = localStorage.getItem('adminProducts');
+  return savedProducts ? JSON.parse(savedProducts) : initialProducts;
+};

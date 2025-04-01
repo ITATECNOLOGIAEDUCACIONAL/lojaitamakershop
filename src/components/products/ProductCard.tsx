@@ -16,12 +16,14 @@ interface ProductCardProps {
   product: Product;
   onAddToCart: (product: Product) => void;
   onPriceUpdate: (productId: string, newPrice: number) => void;
+  showAdminControls?: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ 
   product, 
   onAddToCart, 
-  onPriceUpdate 
+  onPriceUpdate,
+  showAdminControls = true
 }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -40,11 +42,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className="text-primary text-xl font-semibold mr-2">
               R$ {product.price.toFixed(2).replace('.', ',')}
             </span>
-            <PriceEditDialog 
-              productId={product.id} 
-              currentPrice={product.price} 
-              onPriceUpdate={onPriceUpdate} 
-            />
+            {showAdminControls && (
+              <PriceEditDialog 
+                productId={product.id} 
+                currentPrice={product.price} 
+                onPriceUpdate={onPriceUpdate} 
+              />
+            )}
           </div>
           <Button onClick={() => onAddToCart(product)} className="flex items-center">
             <ShoppingCart className="mr-2 h-4 w-4" />

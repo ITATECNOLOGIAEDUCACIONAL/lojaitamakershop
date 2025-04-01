@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LaserCutProducts from "./pages/LaserCutProducts";
 import ThreeDPrintProducts from "./pages/3DPrintProducts";
+import Admin from "./pages/Admin";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/corte-a-laser" element={<LaserCutProducts />} />
             <Route path="/impressao-3d" element={<ThreeDPrintProducts />} />
+            <Route path="/admin" element={<Admin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
