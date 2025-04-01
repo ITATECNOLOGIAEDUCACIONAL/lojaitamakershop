@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { getProductsByCategory } from '@/data/products';
 import { ProductCard } from '@/components/products/ProductCard';
@@ -14,7 +15,7 @@ const LaserCutProducts = () => {
       name: product.name,
       price: product.price,
       quantity: 1,
-      imageUrl: product.images?.[0] || product.imageUrl,
+      imageUrl: product.images?.[0] || '', // Ensure imageUrl is included
     });
     toast.success(`${product.name} adicionado ao carrinho`);
   };

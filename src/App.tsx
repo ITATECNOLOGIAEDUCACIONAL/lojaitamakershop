@@ -12,6 +12,8 @@ import ThreeDPrintProducts from "./pages/3DPrintProducts";
 import Admin from "./pages/Admin";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import CartSidebar from "./components/cart/CartSidebar";
+import CustomerRegistration from "./pages/CustomerRegistration";
 
 const queryClient = new QueryClient();
 
@@ -23,11 +25,13 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Navbar />
+          <CartSidebar />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/corte-a-laser" element={<LaserCutProducts />} />
             <Route path="/impressao-3d" element={<ThreeDPrintProducts />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/cadastro" element={<CustomerRegistration />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

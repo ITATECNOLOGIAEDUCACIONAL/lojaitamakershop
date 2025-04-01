@@ -46,9 +46,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Add new item
       setItems(prev => [...prev, item]);
     }
+    
+    // Automatically open cart when adding items
+    setIsOpen(true);
   };
 
-  // Alias for addItem to maintain compatibility with 3DPrintProducts.tsx
+  // Alias for addItem to maintain compatibility
   const addToCart = addItem;
 
   const removeItem = (id: string) => {
@@ -89,7 +92,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     items,
     isOpen,
     addItem,
-    addToCart, // Added for compatibility
+    addToCart,
     removeItem,
     updateQuantity,
     clearCart,

@@ -1,8 +1,10 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, UserPlus } from 'lucide-react';
 import CartDropdown from './CartDropdown';
 import AdminLink from './AdminLink';
+import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,6 +35,10 @@ const Navbar = () => {
             </Link>
             <Link to="/corte-a-laser" className="font-medium hover:text-primary transition-colors">
               Corte a Laser
+            </Link>
+            <Link to="/cadastro" className="font-medium hover:text-primary transition-colors flex items-center">
+              <UserPlus className="mr-1 h-4 w-4" />
+              Cadastre-se
             </Link>
           </nav>
 
@@ -75,6 +81,14 @@ const Navbar = () => {
                 onClick={closeMenu}
               >
                 Corte a Laser
+              </Link>
+              <Link
+                to="/cadastro"
+                className="font-medium hover:text-primary transition-colors px-4 py-2 flex items-center"
+                onClick={closeMenu}
+              >
+                <UserPlus className="mr-1 h-4 w-4" />
+                Cadastre-se
               </Link>
             </div>
           </div>
