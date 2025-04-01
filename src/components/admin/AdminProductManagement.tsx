@@ -1,12 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { PrintProduct, initialProducts } from '@/data/3dPrintProducts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Plus, Pencil, Trash2, Save } from 'lucide-react';
+import { Plus, Pencil, Trash2, Save, Upload, Image } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 
@@ -25,6 +25,8 @@ export const AdminProductManagement = () => {
 
   const [editingProduct, setEditingProduct] = useState<PrintProduct | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const editFileInputRef = useRef<HTMLInputElement>(null);
   
   const saveProducts = (updatedProducts: PrintProduct[]) => {
     localStorage.setItem('adminProducts', JSON.stringify(updatedProducts));
@@ -79,6 +81,31 @@ export const AdminProductManagement = () => {
   const handleCancelEdit = () => {
     setEditingProduct(null);
   };
+  
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, isEdit: boolean = false) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64String = reader.result as string;
+      if (isEdit && editingProduct) {
+        setEditingProduct({...editingProduct, imageUrl: base64String});
+      } else {
+        setNewProduct({...newProduct, imageUrl: base64String});
+      }
+      toast.success('Imagem carregada com sucesso!');
+    };
+    reader.readAsDataURL(file);
+  };
+  
+  const triggerFileInput = (isEdit: boolean = false) => {
+    if (isEdit) {
+      editFileInputRef.current?.click();
+    } else {
+      fileInputRef.current?.click();
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -118,13 +145,36 @@ export const AdminProductManagement = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="imageUrl">URL da Imagem</Label>
-                <Input
-                  id="imageUrl"
-                  value={newProduct.imageUrl}
-                  onChange={(e) => setNewProduct({ ...newProduct, imageUrl: e.target.value })}
-                  placeholder="URL da imagem do produto"
-                />
+                <Label htmlFor="imageUpload">Imagem do Produto</Label>
+                <div className="flex items-center gap-2">
+                  <Input
+                    ref={fileInputRef}
+                    id="imageUpload"
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => handleFileUpload(e)}
+                  />
+                  <Button 
+                    type="button" 
+                    variant="outline"
+                    onClick={() => triggerFileInput()}
+                    className="flex items-center gap-2"
+                  >
+                    <Upload className="h-4 w-4" />
+                    Selecionar Imagem
+                  </Button>
+                  {newProduct.imageUrl && <span className="text-green-600 text-sm">Imagem selecionada</span>}
+                </div>
+                {newProduct.imageUrl && (
+                  <div className="mt-2 border rounded p-2">
+                    <img 
+                      src={newProduct.imageUrl} 
+                      alt="Preview" 
+                      className="max-h-40 mx-auto object-contain" 
+                    />
+                  </div>
+                )}
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="description">Descrição</Label>
@@ -146,12 +196,16 @@ export const AdminProductManagement = () => {
         {products.map((product) => (
           <Card key={product.id}>
             <div className="aspect-video w-full overflow-hidden">
-              {product.imageUrl && (
+              {product.imageUrl ? (
                 <img
                   src={product.imageUrl}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gray-100">
+                  <Image className="h-12 w-12 text-gray-400" />
+                </div>
               )}
             </div>
             <CardHeader>
@@ -182,12 +236,35 @@ export const AdminProductManagement = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor={`image-${product.id}`}>URL da Imagem</Label>
-                      <Input
-                        id={`image-${product.id}`}
-                        value={editingProduct.imageUrl}
-                        onChange={(e) => setEditingProduct({ ...editingProduct, imageUrl: e.target.value })}
-                      />
+                      <Label htmlFor={`image-${product.id}`}>Imagem do Produto</Label>
+                      <div className="flex items-center gap-2">
+                        <Input
+                          ref={editFileInputRef}
+                          id={`image-${product.id}`}
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) => handleFileUpload(e, true)}
+                        />
+                        <Button 
+                          type="button" 
+                          variant="outline"
+                          onClick={() => triggerFileInput(true)}
+                          className="flex items-center gap-2 w-full"
+                        >
+                          <Upload className="h-4 w-4" />
+                          Atualizar Imagem
+                        </Button>
+                      </div>
+                      {editingProduct.imageUrl && (
+                        <div className="mt-2 border rounded p-2">
+                          <img 
+                            src={editingProduct.imageUrl} 
+                            alt="Preview" 
+                            className="max-h-40 mx-auto object-contain" 
+                          />
+                        </div>
+                      )}
                     </div>
                     <div>
                       <Label htmlFor={`desc-${product.id}`}>Descrição</Label>
