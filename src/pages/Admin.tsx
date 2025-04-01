@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AdminProductManagement } from '@/components/admin/AdminProductManagement';
 import { AdminCustomerManagement } from '@/components/admin/AdminCustomerManagement';
+import { AdminFooterConfiguration } from '@/components/admin/AdminFooterConfiguration';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -74,9 +75,10 @@ const Admin = () => {
       </div>
 
       <Tabs defaultValue="products" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-8">
+        <TabsList className="grid w-full grid-cols-3 mb-8">
           <TabsTrigger value="products">Gerenciar Produtos</TabsTrigger>
           <TabsTrigger value="customers">Gerenciar Clientes</TabsTrigger>
+          <TabsTrigger value="footer">Configurar Rodapé</TabsTrigger>
         </TabsList>
         
         <TabsContent value="products" className="mt-6">
@@ -85,6 +87,10 @@ const Admin = () => {
         
         <TabsContent value="customers" className="mt-6">
           <AdminCustomerManagement />
+        </TabsContent>
+
+        <TabsContent value="footer" className="mt-6">
+          <AdminFooterConfiguration />
         </TabsContent>
       </Tabs>
     </div>

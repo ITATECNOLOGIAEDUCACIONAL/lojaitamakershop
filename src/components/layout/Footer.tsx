@@ -9,29 +9,56 @@ import {
   Phone,
   MapPin
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { FooterConfig } from '../admin/AdminFooterConfiguration';
 
 const Footer = () => {
+  // Default footer configuration (same as in AdminFooterConfiguration)
+  const defaultFooterConfig: FooterConfig = {
+    storeName: 'ITASHOP',
+    storeDescription: 'Experience quality products with our premium selection. We believe in simplicity, functionality, and exceptional customer service.',
+    address: '123 Design Street, Creative City, 10001',
+    phone: '+1 (555) 123-4567',
+    email: 'support@itashop.com',
+    socialLinks: {
+      facebook: '#',
+      twitter: '#',
+      instagram: '#',
+      youtube: '#'
+    }
+  };
+
+  const [footerConfig, setFooterConfig] = useState<FooterConfig>(defaultFooterConfig);
+
+  useEffect(() => {
+    // Load saved configuration from localStorage if it exists
+    const savedConfig = localStorage.getItem('footerConfig');
+    if (savedConfig) {
+      setFooterConfig(JSON.parse(savedConfig));
+    }
+  }, []);
+
   return (
     <footer className="bg-shop-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="font-display text-lg font-medium mb-4">ITASHOP</h3>
+            <h3 className="font-display text-lg font-medium mb-4">{footerConfig.storeName}</h3>
             <p className="text-sm text-shop-600 mb-4">
-              Experience quality products with our premium selection. We believe in simplicity, functionality, and exceptional customer service.
+              {footerConfig.storeDescription}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-shop-500 hover:text-primary transition-colors">
+              <a href={footerConfig.socialLinks.facebook} className="text-shop-500 hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-shop-500 hover:text-primary transition-colors">
+              <a href={footerConfig.socialLinks.twitter} className="text-shop-500 hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-shop-500 hover:text-primary transition-colors">
+              <a href={footerConfig.socialLinks.instagram} className="text-shop-500 hover:text-primary transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-shop-500 hover:text-primary transition-colors">
+              <a href={footerConfig.socialLinks.youtube} className="text-shop-500 hover:text-primary transition-colors">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>
@@ -108,16 +135,16 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-2 mt-0.5" />
                 <span className="text-shop-600">
-                  123 Design Street, Creative City, 10001
+                  {footerConfig.address}
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-primary mr-2" />
-                <span className="text-shop-600">+1 (555) 123-4567</span>
+                <span className="text-shop-600">{footerConfig.phone}</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-primary mr-2" />
-                <span className="text-shop-600">support@itashop.com</span>
+                <span className="text-shop-600">{footerConfig.email}</span>
               </li>
             </ul>
           </div>
@@ -126,7 +153,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="py-6 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-shop-500">
-            <p>&copy; {new Date().getFullYear()} ITASHOP. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} {footerConfig.storeName}. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="/terms" className="hover:text-primary transition-colors">
                 Terms of Service
