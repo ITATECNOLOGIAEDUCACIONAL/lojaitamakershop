@@ -66,6 +66,21 @@ const NavigationMenuDemo = () => {
                   </NavigationMenuLink>
                 </Link>
               </li>
+              <li>
+                <Link to="/produtos/robotica">
+                  <NavigationMenuLink 
+                    className={cn(
+                      "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                      isActive('/produtos/robotica') ? 'bg-accent text-accent-foreground' : ''
+                    )}
+                  >
+                    <div className="text-sm font-medium leading-none">Robótica</div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      Kits educacionais e componentes para robótica
+                    </p>
+                  </NavigationMenuLink>
+                </Link>
+              </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

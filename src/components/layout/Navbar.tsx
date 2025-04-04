@@ -72,6 +72,13 @@ const Navbar = () => {
                 Corte a Laser
               </Link>
               <Link
+                to="/produtos/robotica"
+                className="font-medium hover:text-primary transition-colors px-4 py-2"
+                onClick={closeMenu}
+              >
+                Robótica
+              </Link>
+              <Link
                 to="/cadastro"
                 className="font-medium hover:text-primary transition-colors px-4 py-2 flex items-center"
                 onClick={closeMenu}

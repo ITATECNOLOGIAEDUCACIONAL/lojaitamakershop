@@ -149,6 +149,111 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 8,
     inStock: true
+  },
+  {
+    id: "robo-1",
+    name: "Kit Robô Seguidor de Linha",
+    description: "Kit educacional para montar um robô seguidor de linha. Ideal para iniciantes em robótica e programação Arduino.",
+    price: 149.90,
+    images: ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"],
+    category: "Robótica",
+    tags: ["kit", "arduino", "educacional", "seguidor de linha"],
+    rating: 4.7,
+    reviews: 23,
+    inStock: true,
+    features: [
+      "Arduino UNO R3",
+      "2 Motores DC",
+      "Chassi em acrílico",
+      "Sensores infravermelhos",
+      "Módulo driver L298N",
+      "Manual de montagem e programação"
+    ]
+  },
+  {
+    id: "robo-2",
+    name: "Braço Robótico DIY",
+    description: "Kit de braço robótico para montagem, com 4 graus de liberdade. Controle via Arduino e servomotores de precisão.",
+    price: 299.90,
+    discountPrice: 269.90,
+    images: ["https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"],
+    category: "Robótica",
+    tags: ["braço robótico", "arduino", "servo", "DIY", "educacional"],
+    rating: 4.8,
+    reviews: 17,
+    inStock: true,
+    features: [
+      "4 servomotores de precisão",
+      "Estrutura de alum��nio",
+      "Arduino Nano",
+      "Shield para servos",
+      "Software de controle",
+      "Guia de montagem detalhado"
+    ]
+  },
+  {
+    id: "robo-3",
+    name: "Kit Robô Hexápode",
+    description: "Robô aranha com 18 servomotores para movimentos realistas. Projeto avançado para entusiastas de robótica.",
+    price: 499.90,
+    images: ["https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=800&q=80"],
+    category: "Robótica",
+    tags: ["hexápode", "aranha", "servo", "avançado"],
+    rating: 4.9,
+    reviews: 11,
+    inStock: true,
+    features: [
+      "18 micro servomotores",
+      "Controlador PCA9685",
+      "ESP32 com WiFi e Bluetooth",
+      "Estrutura em PLA impresso em 3D",
+      "Bateria LiPo recarregável",
+      "Controle via smartphone"
+    ]
+  },
+  {
+    id: "robo-4",
+    name: "Kit Arduino Iniciante",
+    description: "Kit completo para iniciantes em Arduino, com todos os componentes essenciais para seus primeiros projetos.",
+    price: 179.90,
+    discountPrice: 159.90,
+    images: ["/lovable-uploads/987e2d86-9830-4f2d-9168-b9e29c4ae67a.png"],
+    category: "Robótica",
+    tags: ["arduino", "iniciante", "kit", "componentes"],
+    rating: 4.6,
+    reviews: 42,
+    inStock: true,
+    features: [
+      "Arduino UNO R3",
+      "Breadboard",
+      "65 jumpers macho-macho",
+      "15 LEDs sortidos",
+      "10 resistores variados",
+      "Sensores (ultrassônico, temperatura)",
+      "Display LCD 16x2",
+      "Livro de projetos para iniciantes"
+    ]
+  },
+  {
+    id: "robo-5",
+    name: "Drone DIY Quadricóptero",
+    description: "Kit para montagem do seu próprio drone. Inclui frame, motores, ESCs e controladora de voo.",
+    price: 599.90,
+    images: ["/lovable-uploads/ca72f799-386e-4bff-844e-9ba5dfb4d28d.png"],
+    category: "Robótica",
+    tags: ["drone", "quadricóptero", "DIY", "montagem"],
+    rating: 4.5,
+    reviews: 9,
+    inStock: true,
+    features: [
+      "Frame de fibra de carbono 250mm",
+      "4 motores brushless 2300KV",
+      "4 ESCs 30A",
+      "Controladora de voo F4",
+      "Rádio receptor compatível",
+      "Bateria LiPo 3S 1500mAh",
+      "Manual de montagem e configuração"
+    ]
   }
 ];
 
@@ -159,6 +264,11 @@ export const getProductById = (id: string): Product | undefined => {
 
 export const getProductsByCategory = (category: string): Product[] => {
   return products.filter(product => product.category === category);
+};
+
+// New function to get robotics products specifically
+export const getRoboticProducts = (): Product[] => {
+  return getProductsByCategory("Robótica");
 };
 
 export const getCategories = (): string[] => {

@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import LaserCutProducts from "./pages/LaserCutProducts";
 import ThreeDPrintProducts from "./pages/3DPrintProducts";
+import RoboticProducts from "./pages/RoboticProducts";
 import Admin from "./pages/Admin";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/corte-a-laser" element={<LaserCutProducts />} />
             <Route path="/impressao-3d" element={<ThreeDPrintProducts />} />
+            <Route path="/produtos/robotica" element={<RoboticProducts />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/cadastro" element={<CustomerRegistration />} />
             <Route path="/checkout" element={<Checkout />} />
