@@ -17,7 +17,7 @@ const RoboticProducts = () => {
       id: product.id,
       name: product.name,
       price: product.discountPrice || product.price,
-      image: product.images[0],
+      imageUrl: product.images[0], // Changed from 'image' to 'imageUrl' to match CartItem interface
       quantity: 1
     });
     
