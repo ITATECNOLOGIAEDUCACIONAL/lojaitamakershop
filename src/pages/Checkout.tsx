@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
+import { CreditCard, QrCode, Receipt } from 'lucide-react'; 
 
 const Checkout = () => {
   const { items, getCartTotal, clearCart } = useCart();
@@ -78,7 +79,7 @@ const Checkout = () => {
             </CardContent>
             <CardFooter className="flex justify-between">
               <span className="font-semibold">Total</span>
-              <span className="font-semibold">{formatCurrency(getCartTotal())}</span>
+              <span className="font-semibold text-lg">{formatCurrency(getCartTotal())}</span>
             </CardFooter>
           </Card>
         </div>
@@ -97,23 +98,32 @@ const Checkout = () => {
                   onValueChange={setPaymentMethod}
                   className="space-y-4"
                 >
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                     <RadioGroupItem value="credit-card" id="credit-card" />
-                    <Label htmlFor="credit-card">Cartão de Crédito</Label>
+                    <Label htmlFor="credit-card" className="flex items-center cursor-pointer">
+                      <CreditCard className="mr-2 h-5 w-5 text-primary" />
+                      <span>Cartão de Crédito</span>
+                    </Label>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                     <RadioGroupItem value="pix" id="pix" />
-                    <Label htmlFor="pix">PIX</Label>
+                    <Label htmlFor="pix" className="flex items-center cursor-pointer">
+                      <QrCode className="mr-2 h-5 w-5 text-green-500" />
+                      <span>PIX</span>
+                    </Label>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                     <RadioGroupItem value="boleto" id="boleto" />
-                    <Label htmlFor="boleto">Boleto Bancário</Label>
+                    <Label htmlFor="boleto" className="flex items-center cursor-pointer">
+                      <Receipt className="mr-2 h-5 w-5 text-gray-600" />
+                      <span>Boleto Bancário</span>
+                    </Label>
                   </div>
                 </RadioGroup>
                 
                 <Button 
                   type="submit" 
-                  className="w-full mt-6"
+                  className="w-full mt-6 py-6 text-lg"
                   disabled={isProcessing}
                 >
                   {isProcessing ? 'Processando...' : 'Finalizar Pedido'}
@@ -121,6 +131,16 @@ const Checkout = () => {
               </form>
             </CardContent>
           </Card>
+
+          <div className="mt-6 bg-green-50 p-4 rounded-lg border border-green-200">
+            <h3 className="font-medium text-green-800 flex items-center">
+              <QrCode className="mr-2 h-5 w-5" />
+              Dica de pagamento
+            </h3>
+            <p className="text-green-700 mt-1 text-sm">
+              Pague com PIX e receba 5% de desconto no valor total da compra!
+            </p>
+          </div>
         </div>
       </div>
     </div>

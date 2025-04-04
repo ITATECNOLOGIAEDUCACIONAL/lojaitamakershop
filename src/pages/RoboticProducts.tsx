@@ -1,11 +1,9 @@
-
 import React, { useState } from 'react';
 import { useToast } from "@/components/ui/use-toast";
 import { ProductCard } from '@/components/products/ProductCard';
 import { getRoboticProducts } from '@/data/products';
 import { Product } from '@/data/products';
 import { useCart } from '@/context/CartContext';
-import { Helmet } from 'react-helmet';
 
 const RoboticProducts = () => {
   const { toast } = useToast();
@@ -43,10 +41,6 @@ const RoboticProducts = () => {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <Helmet>
-        <title>Kits de Robótica | Maker Store</title>
-      </Helmet>
-      
       <div className="mb-10 text-center">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">Kits de Robótica</h1>
         <p className="text-muted-foreground max-w-3xl mx-auto">
