@@ -81,6 +81,21 @@ const NavigationMenuDemo = () => {
                   </NavigationMenuLink>
                 </Link>
               </li>
+              <li>
+                <Link to="/categories">
+                  <NavigationMenuLink 
+                    className={cn(
+                      "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                      isActive('/categories') ? 'bg-accent text-accent-foreground' : ''
+                    )}
+                  >
+                    <div className="text-sm font-medium leading-none">Todas Categorias</div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      Veja todas as categorias de produtos
+                    </p>
+                  </NavigationMenuLink>
+                </Link>
+              </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -97,6 +112,14 @@ const NavigationMenuDemo = () => {
           <Link to="/checkout">
             <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isActive('/checkout') ? 'bg-accent text-accent-foreground' : '')}>
               Checkout
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        
+        <NavigationMenuItem>
+          <Link to="/categories">
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), isActive('/categories') ? 'bg-accent text-accent-foreground' : '')}>
+              Categorias
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

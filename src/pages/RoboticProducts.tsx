@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react';
 import { useToast } from "@/components/ui/use-toast";
 import { ProductCard } from '@/components/products/ProductCard';
 import { getRoboticProducts } from '@/data/products';
 import { Product } from '@/data/products';
 import { useCart } from '@/context/CartContext';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const RoboticProducts = () => {
   const { toast } = useToast();
@@ -15,7 +17,7 @@ const RoboticProducts = () => {
       id: product.id,
       name: product.name,
       price: product.discountPrice || product.price,
-      imageUrl: product.images[0], // Changed from 'image' to 'imageUrl' to match CartItem interface
+      imageUrl: product.images[0],
       quantity: 1
     });
     
@@ -40,33 +42,40 @@ const RoboticProducts = () => {
   };
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      <div className="mb-10 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4">Kits de Robótica</h1>
-        <p className="text-muted-foreground max-w-3xl mx-auto">
-          Explore nossa seleção de kits de robótica para iniciantes e entusiastas. 
-          Desde robôs educacionais até componentes avançados para projetos customizados.
-        </p>
+    <HelmetProvider>
+      <div className="container mx-auto py-10 px-4">
+        <Helmet>
+          <title>Kits de Robótica | Maker Store</title>
+          <meta name="description" content="Explore nossa seleção de kits de robótica para iniciantes e entusiastas." />
+        </Helmet>
+        
+        <div className="mb-10 text-center">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Kits de Robótica</h1>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            Explore nossa seleção de kits de robótica para iniciantes e entusiastas. 
+            Desde robôs educacionais até componentes avançados para projetos customizados.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map(product => (
+            <ProductCard
+              key={product.id}
+              product={{
+                id: product.id,
+                name: product.name,
+                imageUrl: product.images[0],
+                price: product.discountPrice || product.price,
+                description: product.description
+              }}
+              onAddToCart={() => handleAddToCart(product)}
+              onPriceUpdate={handlePriceUpdate}
+              showAdminControls={false}
+            />
+          ))}
+        </div>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map(product => (
-          <ProductCard
-            key={product.id}
-            product={{
-              id: product.id,
-              name: product.name,
-              imageUrl: product.images[0],
-              price: product.discountPrice || product.price,
-              description: product.description
-            }}
-            onAddToCart={() => handleAddToCart(product)}
-            onPriceUpdate={handlePriceUpdate}
-            showAdminControls={false}
-          />
-        ))}
-      </div>
-    </div>
+    </HelmetProvider>
   );
 };
 

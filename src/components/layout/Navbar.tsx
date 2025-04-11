@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, UserPlus } from 'lucide-react';
+import { Menu, X, UserPlus, Grid } from 'lucide-react';
 import CartDropdown from './CartDropdown';
 import AdminLink from './AdminLink';
 import NavigationMenu from './NavigationMenu';
@@ -77,6 +77,14 @@ const Navbar = () => {
                 onClick={closeMenu}
               >
                 Robótica
+              </Link>
+              <Link
+                to="/categories"
+                className="font-medium hover:text-primary transition-colors px-4 py-2 flex items-center"
+                onClick={closeMenu}
+              >
+                <Grid className="mr-1 h-4 w-4" />
+                Categorias
               </Link>
               <Link
                 to="/cadastro"
