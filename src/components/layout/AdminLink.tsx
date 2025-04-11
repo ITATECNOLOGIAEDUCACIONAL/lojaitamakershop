@@ -9,12 +9,12 @@ const AdminLink = () => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Link to="/admin">
-          <Button variant="ghost" size="icon" className="mr-2">
+        <Button variant="ghost" size="icon" className="mr-2" asChild>
+          <Link to="/admin">
             <Settings className="h-5 w-5" />
             <span className="sr-only">Área Administrativa</span>
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </TooltipTrigger>
       <TooltipContent>
         <p>Área Administrativa</p>

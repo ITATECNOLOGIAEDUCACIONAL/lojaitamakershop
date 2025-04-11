@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,11 +12,13 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
-const NavigationMenuDemo = () => {
-  const location = useLocation();
-  
+interface NavigationMenuDemoProps {
+  currentPath: string;
+}
+
+const NavigationMenuDemo = ({ currentPath }: NavigationMenuDemoProps) => {
   const isActive = (path: string) => {
-    return location.pathname === path;
+    return currentPath === path;
   };
 
   return (
